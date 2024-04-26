@@ -6,7 +6,7 @@ This is a package that gives a very simple visual UI for managing roles/permissi
 
 1. Make sure to install the spatie/laravel-permission package first and configure it
 2. Run `composer require lmottasin/laravel-permission-editor`
-3. Run `php artisan vendor:publish --provider="Lmottasin\LaravelPermissionEditor\Provider\PermissionEditorServiceProvider"` to publish the Assets and Config
+3. Run `php artisan vendor:publish --provider="Lmottasin\LaravelPermissionEditor\Providers\PermissionEditorServiceProvider"` to publish the Assets and Config
 4. Launch `/permission-editor/roles` in your browser
 
 How it looks visually:

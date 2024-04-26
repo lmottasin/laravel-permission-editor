@@ -28,11 +28,18 @@ class RoleController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'unique:roles'],
             'permissions' => ['array'],
+            'permissions.*' => ['integer', 'exists:permissions,id'],
         ]);
 
         $role = Role::create(['name' => $request->input('name')]);
 
-        $role->givePermissionTo($request->input('permissions'));
+        $role->givePermissionTo(
+            collect($request->input('permissions'))->map(
+                function ($permission) {
+                    return (int)$permission;
+                }
+            )
+        );
 
         return redirect()->route('permission-editor.roles.index');
     }
@@ -53,7 +60,13 @@ class RoleController extends Controller
 
         $role->update(['name' => $request->input('name')]);
 
-        $role->syncPermissions($request->input('permissions'));
+        $role->syncPermissions(
+            collect($request->input('permissions'))->map(
+                function ($permission) {
+                    return (int)$permission;
+                }
+            )
+        );
 
         return redirect()->route('permission-editor.roles.index');
     }

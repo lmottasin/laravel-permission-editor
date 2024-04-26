@@ -28,11 +28,18 @@ class PermissionController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string', 'unique:permissions'],
             'roles' => ['array'],
+            'roles.*' => ['required', 'string'],
         ]);
 
         $permission = Permission::create($data);
 
-        $permission->syncRoles($request->input('roles'));
+        $permission->syncRoles(
+            collect($request->input('roles'))->map(
+                function ($role) {
+                    return (int)$role;
+                }
+            )
+        );
 
         return redirect()->route('permission-editor.permissions.index');
     }
@@ -53,7 +60,13 @@ class PermissionController extends Controller
 
         $permission->update($data);
 
-        $permission->syncRoles($request->input('roles'));
+        $permission->syncRoles(
+            collect($request->input('roles'))->map(
+                function ($role) {
+                    return (int)$role;
+                }
+            )
+        );
 
         return redirect()->route('permission-editor.permissions.index');
     }

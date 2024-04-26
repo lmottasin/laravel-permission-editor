@@ -1,0 +1,27 @@
+{
+    "name": "lmottasin/laravel-permission-editor",
+    "description": "Visual UI for managing Roles/Permissions for Spatie Laravel Permission package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Md. Mottasin Lemon",
+            "email": "lmottasin@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "spatie/laravel-permission": "6.7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lmottasin\\LaravelPermissionEditor\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lmottasin\\LaravelPermissionEditor\\Providers\\PermissionEditorServiceProvider"
+            ]
+        }
+    }
+}

@@ -11,7 +11,8 @@ This is a package that gives a very simple visual UI for managing roles/permissi
 
 How it looks visually:
 
-![Laravel Permission Editor](https://laraveldaily.com/uploads/2023/01/laravel-permission-editor-view.png)
+<img width="1680" alt="Screenshot 2024-04-26 at 11 32 17 AM" src="https://github.com/lmottasin/laravel-permission-editor/assets/68915904/60904414-e8b4-4178-a21d-17a9e120d0c5">
+
 
 **Notice**: you may want to secure the routes by adding extra middleware like `auth`, you can do it in the published `config/permission-editor.php` file.
 
